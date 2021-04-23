@@ -11,7 +11,7 @@
 3. Move vo_pomodoro.lua file into the Scripts directory that you opened in step 1.
 
 ## Open  
-You can find the script in action list:  
+You can find the script in the action list:  
 ![Action](https://i.ibb.co/BLzB0ZM/actions.png)
 
 ### Launch on startup  
@@ -34,13 +34,16 @@ Paste script ID:
 
 ![Screen_2](https://i.ibb.co/Z8Cr1tF/main.png)  
 
-Click on countdown to start working period
+Click on the timer to start working period
 
 ![work](https://i.ibb.co/zNFkqCV/progress.png)  
 
-You can skip current period or reset timer by right click:  
+You can skip the current period or reset the timer by the right click:  
 
 ![skip](https://i.ibb.co/Y0Mv8yS/skip.png)
+
+When the working period ends the transport will be stopped.  
+Click on timer to start break.
 
 ### Settings  
 
