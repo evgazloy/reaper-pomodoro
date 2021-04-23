@@ -106,6 +106,8 @@ function init()
     s = true
   end
 
+  set_t = {}
+  update_temp_set()
   if s then save() end
   
   mouse = {
@@ -143,7 +145,6 @@ function init()
   local min_main_w, min_main_h = gfx.measurestr("55:55")
   min_w = math.max(min_w, min_main_w) + 7 * gui.settings.margins
   min_h = math.max(2 * min_h, min_main_h) + 3 * gui.settings.margins
-  set_t = {}
   
   mainloop()
 end
@@ -157,8 +158,6 @@ function save()
   timer.settings.break_short = set_t[2]
   timer.settings.break_long = set_t[3]
   timer.settings.count = set_t[4]
-  
-  
   
   reaper.SetExtState(vo, "work", tostring(timer.settings.work), 1)
   reaper.SetExtState(vo, "short", tostring(timer.settings.break_short), 1)
@@ -256,6 +255,13 @@ function time()
   end
 end
 
+function update_temp_set()
+  set_t[1] = timer.settings.work
+  set_t[2] = timer.settings.break_short
+  set_t[3] = timer.settings.break_long
+  set_t[4] = timer.settings.count
+end
+
 function menu()
   local x, y = gfx.x, gfx.y
   gfx.x, gfx.y = gfx.mouse_x, gfx.mouse_y
@@ -277,10 +283,7 @@ function menu()
       local acc = gfx.showmenu("#Reset timer?||Yes|No")
       if acc == 2 then reset() end
     elseif (r == 3) then
-      set_t[1] = timer.settings.work
-      set_t[2] = timer.settings.break_short
-      set_t[3] = timer.settings.break_long
-      set_t[4] = timer.settings.count
+      update_temp_set()
       timer.settings.visible = true
     elseif (r == 4) then dock()
     end
