@@ -209,6 +209,7 @@ end
 
 function reset()
   progress.count = 0
+  progress.flash = false
   reset_to_work()
 end
 
@@ -279,6 +280,7 @@ function menu()
     local r = gfx.showmenu(m)
     if (r == 1) then
       next_period()
+      progress.flash = false
     elseif (r == 2) then
       local acc = gfx.showmenu("#Reset timer?||Yes|No")
       if acc == 2 then reset() end
