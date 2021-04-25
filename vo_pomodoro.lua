@@ -147,6 +147,11 @@ function init()
   min_h = math.max(2 * min_h, min_main_h) + 3 * gui.settings.margins
   
   mainloop()
+  unfocus()
+end
+
+function unfocus()
+  reaper.SetCursorContext(0)
 end
 
 function limit(x)
@@ -361,10 +366,12 @@ function mainloop()
         if isMouse() then
           if mouse.l_state then
             left_click()
+            unfocus()
           end
         
           if mouse.r_state then
             menu()
+            unfocus()
           end
         end
         
